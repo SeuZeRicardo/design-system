@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { tokens, shadowAliases } from "./tokens";
+import { tokens, shadowAliases } from "../tokens";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -25,7 +25,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
-    const getVariantStyles = () => {
+    const getVariantStyles = (): React.CSSProperties => {
       const baseStyles = {
         display: "inline-flex",
         alignItems: "center",
@@ -93,7 +93,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       return { ...baseStyles, ...variantStyles[variant] };
     };
 
-    const getSizeStyles = () => {
+    const getSizeStyles = (): React.CSSProperties => {
       const sizeStyles = {
         small: {
           padding: `${tokens.spacing[1]} ${tokens.spacing[3]}`,
@@ -112,8 +112,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       return sizeStyles[size];
     };
 
-    const getAdditionalStyles = () => {
-      const additionalStyles: any = {};
+    const getAdditionalStyles = (): React.CSSProperties => {
+      const additionalStyles: React.CSSProperties = {};
 
       if (fullWidth) {
         additionalStyles.width = "100%";
@@ -136,15 +136,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <button
-        ref={ref}
-        type="button"
-        className={className}
-        style={buttonStyle}
-        disabled={disabled || loading}
-        aria-disabled={disabled || loading}
         {...other}
+        aria-disabled={disabled || loading}
+        className={className}
+        disabled={disabled || loading}
+        ref={ref}
+        style={buttonStyle}
+        type="button"
       >
-        {loading && (
+        {loading ? (
           <span
             style={{
               position: "absolute",
@@ -159,7 +159,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
               animation: "spin 1s linear infinite",
             }}
           />
-        )}
+        ) : null}
         {children}
       </button>
     );

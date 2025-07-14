@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button } from "@acme/ui/button";
+import { Button } from "@acme/ui/components";
 
 const meta: Meta<typeof Button> = {
   component: Button,
@@ -118,19 +118,18 @@ export const AllVariants: Story = {
       <Button variant="primary">Primary</Button>
       <Button variant="secondary">Secondary</Button>
       <Button variant="ghost">Ghost</Button>
-      <Button variant="primary" size="small">
+      <Button size="small" variant="primary">
         Small
       </Button>
-      <Button variant="primary" size="large">
+      <Button size="large" variant="primary">
         Large
       </Button>
-      <Button variant="primary" loading>
+      <Button loading variant="primary">
         Loading
       </Button>
-      <Button variant="primary" disabled>
+      <Button disabled variant="primary">
         Disabled
       </Button>
     </div>
   ),
-  name: "All Variants",
 };

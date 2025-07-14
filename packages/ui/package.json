@@ -4,10 +4,20 @@
   "sideEffects": false,
   "license": "MIT",
   "exports": {
-    "./button": {
-      "types": "./src/button.tsx",
-      "import": "./dist/button.mjs",
-      "require": "./dist/button.js"
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./components": {
+      "types": "./src/components/index.ts",
+      "import": "./dist/components/index.mjs",
+      "require": "./dist/components/index.js"
+    },
+    "./icons": {
+      "types": "./src/icons/index.ts",
+      "import": "./dist/icons/index.mjs",
+      "require": "./dist/icons/index.js"
     },
     "./tokens": {
       "types": "./src/tokens/index.ts",

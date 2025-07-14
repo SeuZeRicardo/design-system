@@ -1,78 +1,14 @@
 // Main stylesheet entry point
 @forward "variables";
 @forward "mixins";
+@forward "globals";
 
 // Base styles
 @use "variables" as *;
 @use "mixins" as *;
 
-// Global styles
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html {
-  font-family: $font-family-sans;
-  font-size: $font-size-base;
-  line-height: $line-height-normal;
-  color: $color-text-primary;
-  background-color: $color-background-primary;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizelegibility;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-}
-
-// Reset default styles
-button,
-input,
-optgroup,
-select,
-textarea {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  margin: 0;
-}
-
-button {
-  background-color: transparent;
-  background-image: none;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
-}
-
-// Focus styles
-:focus {
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-}
-
-:focus-visible {
-  @include focus-ring;
-}
-
-// Link styles
-a {
-  color: $color-interactive-primary;
-  text-decoration: none;
-
-  &:hover {
-    color: $color-interactive-primary-hover;
-    text-decoration: underline;
-  }
-
-  &:focus-visible {
-    @include focus-ring;
-  }
-}
+// Import global styles (reset, base styles, etc.)
+@import "globals";
 
 // Heading styles
 h1 {

@@ -1,0 +1,55 @@
+{
+  "name": "@acme/tokens",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src/styles",
+    "src/types"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles": {
+      "import": "./src/styles/index.scss",
+      "require": "./src/styles/index.scss"
+    },
+    "./styles/*": {
+      "import": "./src/styles/*",
+      "require": "./src/styles/*"
+    },
+    "./styles/globals": {
+      "import": "./src/styles/globals.scss",
+      "require": "./src/styles/globals.scss"
+    },
+    "./types": {
+      "import": "./src/types/scss.d.ts",
+      "require": "./src/types/scss.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --sourcemap --clean --target es2020 --out-dir dist",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --sourcemap --clean --target es2020 --out-dir dist --watch",
+    "clean": "rm -rf .turbo node_modules dist",
+    "lint": "eslint . --max-warnings 0",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "eslint": "^8.57.0",
+    "sass": "^1.89.2",
+    "tsup": "^8.0.0",
+    "typescript": "5.5.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

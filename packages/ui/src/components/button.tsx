@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { tokens, shadowAliases } from "../tokens";
+import { tokens, shadowAliases } from "@acme/tokens";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {

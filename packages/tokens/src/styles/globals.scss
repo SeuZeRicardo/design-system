@@ -1,0 +1,105 @@
+// Global styles for design system components
+@use "variables" as *;
+@use "mixins" as *;
+
+// Keyframes
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+// Base reset
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// Focus styles for accessibility
+*:focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: $shadow-focus;
+}
+
+// Typography defaults
+html {
+  font-family: $font-family-sans;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  color: $color-text-primary;
+  background-color: $color-background-primary;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
+}
+
+// Button reset
+button {
+  background-color: transparent;
+  background-image: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+}
+
+// Additional useful global styles
+body {
+  margin: 0;
+  padding: 0;
+}
+
+// Form elements reset
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+}
+
+// Link defaults
+a {
+  color: $color-interactive-primary;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-interactive-primary-hover;
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+// Image defaults
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// Table defaults
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+// Utility classes
+.sr-only {
+  @include sr-only;
+}
+
+.truncate {
+  @include truncate;
+}

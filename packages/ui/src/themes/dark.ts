@@ -1,4 +1,4 @@
-import { tokens } from "../tokens";
+import { tokens } from "@acme/tokens";
 
 export const darkTheme = {
   colors: {

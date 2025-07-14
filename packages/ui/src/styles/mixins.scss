@@ -1,0 +1,284 @@
+// Mixins for common patterns
+@use "variables" as *;
+
+// Media query mixins
+@mixin mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$breakpoint-sm}) and (max-width: #{$breakpoint-lg - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$breakpoint-lg}) {
+    @content;
+  }
+}
+
+@mixin from-sm {
+  @media (min-width: #{$breakpoint-sm}) {
+    @content;
+  }
+}
+
+@mixin from-md {
+  @media (min-width: #{$breakpoint-md}) {
+    @content;
+  }
+}
+
+@mixin from-lg {
+  @media (min-width: #{$breakpoint-lg}) {
+    @content;
+  }
+}
+
+@mixin from-xl {
+  @media (min-width: #{$breakpoint-xl}) {
+    @content;
+  }
+}
+
+// Typography mixins
+@mixin text-style(
+  $size,
+  $weight: $font-weight-normal,
+  $line-height: $line-height-normal
+) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+}
+
+@mixin heading-1 {
+  @include text-style($font-size-4xl, $font-weight-bold, $line-height-tight);
+}
+
+@mixin heading-2 {
+  @include text-style($font-size-3xl, $font-weight-bold, $line-height-tight);
+}
+
+@mixin heading-3 {
+  @include text-style($font-size-2xl, $font-weight-semibold, $line-height-snug);
+}
+
+@mixin heading-4 {
+  @include text-style($font-size-xl, $font-weight-semibold, $line-height-snug);
+}
+
+@mixin heading-5 {
+  @include text-style($font-size-lg, $font-weight-medium, $line-height-normal);
+}
+
+@mixin heading-6 {
+  @include text-style(
+    $font-size-base,
+    $font-weight-medium,
+    $line-height-normal
+  );
+}
+
+@mixin body-text {
+  @include text-style(
+    $font-size-base,
+    $font-weight-normal,
+    $line-height-normal
+  );
+}
+
+@mixin body-small {
+  @include text-style($font-size-sm, $font-weight-normal, $line-height-normal);
+}
+
+@mixin button-text {
+  @include text-style($font-size-base, $font-weight-medium, 1);
+}
+
+@mixin caption-text {
+  @include text-style($font-size-sm, $font-weight-normal, $line-height-normal);
+}
+
+@mixin label-text {
+  @include text-style($font-size-sm, $font-weight-medium, $line-height-normal);
+}
+
+// Focus styles
+@mixin focus-ring {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: $shadow-focus;
+}
+
+@mixin focus-visible {
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+// Interactive states
+@mixin hover-state {
+  transition: $transition-colors;
+
+  &:hover {
+    @content;
+  }
+}
+
+@mixin active-state {
+  &:active {
+    @content;
+  }
+}
+
+// Button variants
+@mixin button-base {
+  @include button-text;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: $border-width-1 solid transparent;
+  border-radius: $border-radius-md;
+  padding: $spacing-2 $spacing-4;
+  cursor: pointer;
+  transition: $transition-colors;
+  text-decoration: none;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  @include focus-visible;
+}
+
+@mixin button-primary {
+  @include button-base;
+  background-color: $color-interactive-primary;
+  color: $color-text-inverse;
+  border-color: $color-interactive-primary;
+
+  @include hover-state {
+    background-color: $color-interactive-primary-hover;
+    border-color: $color-interactive-primary-hover;
+  }
+
+  @include active-state {
+    background-color: $color-interactive-primary-active;
+    border-color: $color-interactive-primary-active;
+  }
+}
+
+@mixin button-secondary {
+  @include button-base;
+  background-color: $color-background-primary;
+  color: $color-text-primary;
+  border-color: $color-border-primary;
+
+  @include hover-state {
+    background-color: $color-background-secondary;
+    border-color: $color-border-secondary;
+  }
+
+  @include active-state {
+    background-color: $color-background-tertiary;
+    border-color: $color-border-tertiary;
+  }
+}
+
+@mixin button-ghost {
+  @include button-base;
+  background-color: transparent;
+  color: $color-text-primary;
+  border-color: transparent;
+
+  @include hover-state {
+    background-color: $color-background-secondary;
+  }
+
+  @include active-state {
+    background-color: $color-background-tertiary;
+  }
+}
+
+// Card component
+@mixin card {
+  background-color: $color-background-primary;
+  border: $border-width-1 solid $color-border-primary;
+  border-radius: $border-radius-lg;
+  padding: $spacing-6;
+  box-shadow: $shadow-base;
+}
+
+// Form elements
+@mixin input-base {
+  @include body-text;
+  width: 100%;
+  padding: $spacing-2 $spacing-3;
+  border: $border-width-1 solid $color-border-primary;
+  border-radius: $border-radius-md;
+  background-color: $color-background-primary;
+  color: $color-text-primary;
+  transition: $transition-colors;
+
+  &::placeholder {
+    color: $color-text-tertiary;
+  }
+
+  &:hover {
+    border-color: $color-border-secondary;
+  }
+
+  &:focus {
+    border-color: $color-border-focus;
+    outline: none;
+    box-shadow: $shadow-focus;
+  }
+
+  &:disabled {
+    background-color: $color-background-secondary;
+    color: $color-text-disabled;
+    cursor: not-allowed;
+  }
+}
+
+// Utility mixins
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: $spacing-4;
+  padding-right: $spacing-4;
+
+  @include from-sm {
+    padding-left: $spacing-6;
+    padding-right: $spacing-6;
+  }
+
+  @include from-lg {
+    padding-left: $spacing-8;
+    padding-right: $spacing-8;
+  }
+}

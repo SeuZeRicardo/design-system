@@ -1,0 +1,178 @@
+// Main stylesheet entry point
+@forward "variables";
+@forward "mixins";
+
+// Base styles
+@use "variables" as *;
+@use "mixins" as *;
+
+// Global styles
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: $font-family-sans;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  color: $color-text-primary;
+  background-color: $color-background-primary;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+// Reset default styles
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+}
+
+button {
+  background-color: transparent;
+  background-image: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+// Focus styles
+:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+:focus-visible {
+  @include focus-ring;
+}
+
+// Link styles
+a {
+  color: $color-interactive-primary;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-interactive-primary-hover;
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+// Heading styles
+h1 {
+  @include heading-1;
+  margin: 0 0 $spacing-4 0;
+}
+
+h2 {
+  @include heading-2;
+  margin: 0 0 $spacing-3 0;
+}
+
+h3 {
+  @include heading-3;
+  margin: 0 0 $spacing-3 0;
+}
+
+h4 {
+  @include heading-4;
+  margin: 0 0 $spacing-2 0;
+}
+
+h5 {
+  @include heading-5;
+  margin: 0 0 $spacing-2 0;
+}
+
+h6 {
+  @include heading-6;
+  margin: 0 0 $spacing-2 0;
+}
+
+// Paragraph styles
+p {
+  @include body-text;
+  margin: 0 0 $spacing-4 0;
+}
+
+// List styles
+ul,
+ol {
+  margin: 0 0 $spacing-4 0;
+  padding-left: $spacing-6;
+}
+
+li {
+  margin-bottom: $spacing-1;
+}
+
+// Table styles
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: $spacing-4;
+}
+
+th,
+td {
+  padding: $spacing-2;
+  text-align: left;
+  border-bottom: $border-width-1 solid $color-border-primary;
+}
+
+th {
+  font-weight: $font-weight-medium;
+  background-color: $color-background-secondary;
+}
+
+// Code styles
+code {
+  font-family: $font-family-mono;
+  font-size: 0.875em;
+  background-color: $color-background-secondary;
+  padding: 0.125em 0.25em;
+  border-radius: $border-radius-sm;
+}
+
+pre {
+  font-family: $font-family-mono;
+  background-color: $color-background-secondary;
+  padding: $spacing-4;
+  border-radius: $border-radius-md;
+  overflow-x: auto;
+  margin: 0 0 $spacing-4 0;
+
+  code {
+    background-color: transparent;
+    padding: 0;
+  }
+}
+
+// Utility classes
+.sr-only {
+  @include sr-only;
+}
+
+.truncate {
+  @include truncate;
+}
+
+.container {
+  @include container;
+}

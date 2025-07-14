@@ -8,6 +8,20 @@
       "types": "./src/button.tsx",
       "import": "./dist/button.mjs",
       "require": "./dist/button.js"
+    },
+    "./tokens": {
+      "types": "./src/tokens/index.ts",
+      "import": "./dist/tokens/index.mjs",
+      "require": "./dist/tokens/index.js"
+    },
+    "./styles": {
+      "import": "./src/styles/index.scss",
+      "require": "./src/styles/index.scss"
+    },
+    "./themes": {
+      "types": "./src/themes/index.ts",
+      "import": "./dist/themes/index.mjs",
+      "require": "./dist/themes/index.js"
     }
   },
   "scripts": {
@@ -18,12 +32,15 @@
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "@types/node": "^24.0.13",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
     "eslint": "^8.57.0",
-    "@repo/typescript-config": "*",
+    "sass": "^1.89.2",
     "tsup": "^8.0.2",
-    "typescript": "5.5.4"
+    "typescript": "5.5.4",
+    "typescript-plugin-css-modules": "^5.1.0"
   },
   "dependencies": {
     "react": "^18.2.0"

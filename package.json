@@ -9,10 +9,16 @@
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "turbo run build --filter=docs^... && changeset publish",
-    "preview-storybook": "turbo run preview-storybook"
+    "preview-storybook": "turbo run preview-storybook",
+    "prepare": "husky",
+    "commit": "git-cz",
+    "commitlint": "commitlint --edit"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.1",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-workspace-scopes": "^19.8.1",
+    "husky": "^9.1.7",
     "prettier": "^3.2.5",
     "turbo": "^2.5.4"
   },

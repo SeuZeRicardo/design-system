@@ -36,14 +36,14 @@
     "clean": "rm -rf .turbo node_modules dist"
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
-    "@types/node": "^24.0.13",
-    "@types/react": "^18.2.61",
-    "@types/react-dom": "^18.2.19",
+    "@acme/eslint-config": "file:../eslint-config",
+    "@acme/typescript-config": "file:../typescript-config",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
     "eslint": "^8.57.0",
+    "react": "^19.0.0",
     "tsup": "^8.0.2",
-    "typescript": "5.5.4"
+    "typescript": "^5.3.3"
   },
   "dependencies": {
     "@acme/tokens": "*",
